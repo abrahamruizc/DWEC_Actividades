@@ -5,7 +5,7 @@ desde hoy hasta el fin de curso (por ejemplo, el 24 de junio).*/
 let fecha = new Date();
 
 // almacenamos la fecha del 24  de junio 
-let fincurso = new Date(2023, 05, 24);
+let fincurso = new Date(2023, 06, 24);
 
 // de cada fecha obtenemos los segundos
 fecha.getTime;
