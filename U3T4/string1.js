@@ -14,3 +14,29 @@ const prompt = require('prompt-sync')({sigint: true});
 let nombre = prompt("introduce tu nombre ");
 let apellidos = prompt("introduce tus apellidos ");
 
+//dividimos los apellidos y los almacenamos en un array para usarlos mas adelante
+let separados = apellidos.split(" ");
+console.log(separados);
+
+
+let suma = nombre+separados[0]+separados[1];
+//nombre sin contar espacios
+console.log(suma);
+
+//cadena en minusculas y mayusculas
+console.log(suma.toUpperCase() + " " + suma.toLowerCase());
+
+
+console.log( "Nombre: "+nombre+ " / Apellido1: " + separados[0] + " / Apellido2: "+ separados[1]);
+
+//propuesta de nombre de usuario
+let usuario = nombre.charAt(0)+separados[0]+separados[1].charAt(0);
+
+console.log(usuario);
+
+//propuesta de nombre compuesta por las tres primeras letras del nombre y de los 2 apellidos
+//usamos los substring para recojer las 3 partes del nombre y del apellido
+let usuariootro = nombre.substring(0, 3)+ separados[0].substring(0,3)+separados[1].substring(0,3);
+
+console.log(usuariootro);
+
