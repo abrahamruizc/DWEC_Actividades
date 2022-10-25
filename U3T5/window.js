@@ -26,7 +26,21 @@ function ventanaNueva(){
 
 
 function mover(){
-    window.moveTo(100,100);
+    ventana.moveTo(100,100);
 }
 
+function aumentarventana(){
+    ventana.resizeBy(10, 10);
+}
 
+function fijo() {
+    ventana.resizeTo(400, 200);
+}
+
+function ponerscroll(){
+    scrollTo(0, 0);
+}
+
+function poneradiez(){
+    scrollTo(0, 10);
+}
