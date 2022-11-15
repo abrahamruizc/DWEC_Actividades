@@ -1,0 +1,8 @@
+
+function validarNombre(){
+
+}
+
+function validarGrupomusica(){
+    
+}
