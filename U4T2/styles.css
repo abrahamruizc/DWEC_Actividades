@@ -1,0 +1,38 @@
+table{
+    width:100%;
+    border: 1px solid red;
+}
+td{
+    border: 1px solid red;
+    height: 150px; 
+}
+
+img{
+    height: 100px;
+    width: 100px;
+    display: none;
+}
+
+/* .lisa{
+
+}
+
+.bart{
+
+}
+
+.homer{
+
+}
+
+.marge{
+
+}
+
+.maggie{
+
+} */
+
+/* td:hover{
+    background-color: red;
+} */
