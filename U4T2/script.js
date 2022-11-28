@@ -6,10 +6,11 @@ const imagenes = document.querySelectorAll("img");
 
 for(i = 0; i< cuadros.length; i++){
     cuadros[i].addEventListener("click", function (){
-       for(i =0; i< imagenes.length; i++){
-            console.log("entra");
-            imagenes[i].style.display = "inline";
-       }
+        this.firstChild.style.display = "inline";
+    //    for(i =0; i< imagenes.length; i++){
+    //         console.log("entra");
+    //         imagenes[i].style.display = "inline";
+    //    }
     });
 }
 
