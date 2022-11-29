@@ -5,6 +5,7 @@ table{
 td{
     border: 1px solid red;
     height: 150px; 
+    width: 190px;
 }
 
 img{
@@ -35,4 +36,4 @@ img{
 
 /* td:hover{
     background-color: red;
-} */
+}  */

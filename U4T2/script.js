@@ -1,23 +1,29 @@
 const cuadros = document.querySelectorAll("td");
-const imagenes = document.querySelectorAll("img");
-// let celda = document.getElementsByTagName("td");
-
-
 
 for(i = 0; i< cuadros.length; i++){
+    // let clase = cuadros[i].firstChild.className;
+    // console.log(clase);
     cuadros[i].addEventListener("click", function (){
         this.firstChild.style.display = "inline";
-    //    for(i =0; i< imagenes.length; i++){
-    //         console.log("entra");
-    //         imagenes[i].style.display = "inline";
-    //    }
+        let clase = this.firstChild.className;
+        let contador= 0;
+        for(e =0; e < cuadros.length; e++){
+            if(cuadros[e].firstChild.className == clase && cuadros[e].firstChild.style.display == "inline"){
+                contador++;
+                console.log(contador);
+                if(contador ==2){
+                    cuadros[e].style.backgroundColor = "green";
+                    this.style.backgroundColor= "green";
+                }
+
+            }
+
+        }
     });
 }
+
 
 // for(const entry of cuadros.entries()){
 //     alert("mensaje")
 // }
 
-function comprobar(){
-    alert("mensaje");
-}
