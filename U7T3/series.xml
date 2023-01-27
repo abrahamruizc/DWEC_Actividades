@@ -1,0 +1,17 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+<series>
+  <serie>
+    <titulo>titulo1</titulo>
+    <cadena>HBO</cadena>
+    <director>director1</director>
+    <ano>2000</ano>
+    <terminada>si</terminada>
+  </serie>
+  <serie>
+    <titulo>titulo2</titulo>
+    <cadena>HBO</cadena>
+    <director>director2</director>
+    <ano>2000</ano>
+    <terminada>no</terminada>
+  </serie>
+</series> 

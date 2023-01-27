@@ -25,6 +25,12 @@ function muestra_contenido() {
 
         let resultado = document.getElementById("resultado");
         resultado.textContent = peticion_http.responseText;
+        console.log(resultado.textContent);
+        if (resultado.textContent === "SI") {
+          resultado.style.color = "green";
+        } else {
+          resultado.style.color = "red";
+        }
     }
   }
 }
