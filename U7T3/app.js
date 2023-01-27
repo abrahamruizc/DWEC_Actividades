@@ -21,11 +21,16 @@ function peticion() {
     if (peticion_http.status === 200) {
 
         resultados = peticion_http.responseXML;
-
-
-        console.log(resultados);
-
+        let series = resultados.documentElement.getElementsByTagName("serie");
+        console.log(series);
         
+        let tabla = document.createElement("table");
+
+        let body = document.getElementsByTagName("body").item(0);
+
+        body.append(tabla);
+
+        console.log(body);
         
 
     }
