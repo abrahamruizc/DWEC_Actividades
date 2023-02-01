@@ -26,9 +26,46 @@ function peticion() {
         
         let tabla = document.createElement("table");
 
+        for(let i = 0; i < series.length; i++) {
+          console.log(series[i].children);
+          let fila = document.createElement("tr");
+
+          let hijos = series[i].children;
+          for(let j = 0; j < hijos.length; j++){
+          console.log(hijos[j]);
+          let hijo = hijos[j];
+            
+            switch(hijo.tagName) {
+              case "titulo":
+                break;
+              case "cadena":
+                break;
+              case "director":
+                break;
+              case "ano":
+                break;
+              case "terminada":
+                break;
+            } 
+
+              
+          }
+        }
+
+        
+
         let body = document.getElementsByTagName("body").item(0);
 
+        let th = document.createElement("th");
+
+        let tr = document.createElement("tr");
+
+        tabla.appendChild(th);
+
         body.append(tabla);
+
+      
+
 
         console.log(body);
         
