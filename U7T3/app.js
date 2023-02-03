@@ -26,6 +26,14 @@ function peticion() {
         
         let tabla = document.createElement("table");
 
+        let body = document.getElementsByTagName("body").item(0);
+
+
+        body.append(tabla);
+
+      
+        console.log(body);
+
         for(let i = 0; i < series.length; i++) {
           console.log(series[i].children);
           let fila = document.createElement("tr");
@@ -34,42 +42,66 @@ function peticion() {
           for(let j = 0; j < hijos.length; j++){
           console.log(hijos[j]);
           let hijo = hijos[j];
-            
+  
             switch(hijo.tagName) {
               case "titulo":
-                break;
-              case "cadena":
+                let th = document.createElement("th");
+                th.innerHTML = hijo.textContent;
+
+                fila.appendChild(th);
+                
                 break;
               case "director":
+                let director = document.createElement("td");
+                let i = document.createElement("i");
+                i.innerHTML = hijo.textContent;
+
+                director.appendChild(i);
+                fila.appendChild(director);
                 break;
               case "ano":
+                let ano = document.createElement("td");
+                ano.innerHTML = hijo.textContent;
+
+                if (hijo.textContent <= 2000){
+                  ano.setAttribute("style", "color: red;");
+                } else if (hijo.textContent >= 2001 && hijo.textContent <= 2002){
+                  ano.setAttribute("style", "color: yellow;");
+                } else {
+                  ano.setAttribute("style", "color: green;");
+                }
+
+
+                fila.appendChild(ano);
                 break;
               case "terminada":
+                let terminada = document.createElement("td");
+                let si = document.createElement("img");
+                si.src = "cheque.png";
+                si.setAttribute("style", "width:5%");
+                let no = document.createElement("img");
+                no.src = "cancel.png";
+                no.setAttribute("style", "width:5%");
+                if(hijo.textContent == "si"){
+                  terminada.appendChild(si);
+                } else {
+                  terminada.appendChild(no);
+                }
+
+                fila.appendChild(terminada);
                 break;
-            } 
+              default:
+                let defaul = document.createElement("td");
+                defaul.innerHTML = hijo.textContent;
 
-              
+                fila.appendChild(defaul);
+            }
+            tabla.appendChild(fila);
+            
           }
+
+          console.log(body);
         }
-
-        
-
-        let body = document.getElementsByTagName("body").item(0);
-
-        let th = document.createElement("th");
-
-        let tr = document.createElement("tr");
-
-        tabla.appendChild(th);
-
-        body.append(tabla);
-
-      
-
-
-        console.log(body);
-        
-
     }
   }
 }
