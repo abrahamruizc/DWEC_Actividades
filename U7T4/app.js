@@ -48,19 +48,47 @@ function peticion() {
           let terminada = document.createTextNode(item.terminada);
           console.log(titulo, cadena, director, ano, terminada);
 
-          let coltitulo = document.createElement("td");
+          let coltitulo = document.createElement("th");
           let colcadena = document.createElement("td");
           let coldirector = document.createElement("td");
           let colanio = document.createElement("td");
           let colterminada = document.createElement("td");
+          let i = document.createElement("i");
 
+          i.appendChild(director);
+
+
+          console.log(parseInt(ano.textContent));
+          if(parseInt(ano.textContent) <= 2000){
+            console.log("rojo");
+            colanio.setAttribute("style", "color: red;");
+          } else if (parseInt(ano.textContent)  >= 2001 && parseInt(ano.textContent) <= 2010){
+            console.log("amarillo");
+            colanio.setAttribute("style", "color: yellow;");
+          } else{
+            console.log("verde");
+            colanio.setAttribute("style", "color: green;");
+          }
+
+          let check = document.createElement("img");
+          check.src = "cheque.png";
+          check.setAttribute("style", "width:5%");
+          let cross = document.createElement("img");
+          cross.src = "cancel.png";
+          cross.setAttribute("style", "width:5%");
+        
 
           coltitulo.appendChild(titulo);
           colcadena.appendChild(cadena);
-          coldirector.appendChild(director);
+          coldirector.appendChild(i);
           colanio.appendChild(ano);
-          colterminada.appendChild(terminada);
-          
+
+          if(terminada.textContent == "si"){
+            colterminada.appendChild(check);
+          } else {
+            colterminada.appendChild(cross);
+          }
+
 
 
           fila.appendChild(coltitulo);

@@ -65,7 +65,7 @@ function peticion() {
 
                 if (hijo.textContent <= 2000){
                   ano.setAttribute("style", "color: red;");
-                } else if (hijo.textContent >= 2001 && hijo.textContent <= 2002){
+                } else if (hijo.textContent >= 2001 && hijo.textContent <= 2010){
                   ano.setAttribute("style", "color: yellow;");
                 } else {
                   ano.setAttribute("style", "color: green;");
