@@ -10,7 +10,66 @@ botonxml.addEventListener("click",cargarTablaxml);
 let botonfetch = document.getElementById("fetch");
 botonfetch.addEventListener("click",cargarTablafetch);
 
+let botonmodif = document.getElementById("modificar");
+botonmodif.addEventListener("click", actualizar_comunidad);
 }
+
+
+function genera_select(){
+    document.getElementById("select").innerHTML = "";
+    let select = document.getElementById("select");
+
+    for (const comunidad of comunidad_array) {
+        let opcion = document.createElement("option");
+        opcion.setAttribute("value", comunidad.ccaa);
+        opcion.setAttribute("text", comunidad.ccaa);
+        opcion.textContent = comunidad.ccaa;
+        select.appendChild(opcion);
+    }
+}
+
+
+function actualizar_comunidad() {
+    let comunidad = {
+      ccaa: document.getElementById("select").value,
+      dosisEntregadas: parseInt(document.getElementById("dosisEntregadas").value),
+      dosisAdministradas: parseInt(document.getElementById("dosisAdministradas").value),
+      dosisPautaCompletada: parseInt(document.getElementById("dosisPautaCompletada").value),
+      porcentajeEntregadas: parseFloat(
+        document.getElementById("porcentajeEntradas").value
+      ),
+      porcentajePoblacionAdministradas: parseFloat(
+        document.getElementById("porcentajePoblacionAdministradas").value
+      ),
+      porcentajePoblacionCompletas: parseFloat(
+        document.getElementById("porcentajePoblacionCompletas").value
+      ),
+    };
+  
+    fetch("actualizar_comunidad.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(comunidad),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        for (let i = 0; i < comunidad_array.length; i++) {
+          if (data.ccaa === comunidad_array[i].ccaa) {
+            comunidad_array[i] = data;
+          }
+        }
+        document.getElementById("resultado").innerHTML = "Comunidad actualizada";
+        cargarTabla(comunidad_array);
+      })
+      .catch((err) => console.log(err));
+  }
+  
 
 function cargarTablafetch(){
 
@@ -58,6 +117,7 @@ function procesar_datos(datos){
     document.getElementById("resultado").innerHTML = "datos cargados de la web";
     console.log(comunidad_array);
     insertar_comunidades(comunidad_array);
+    genera_select();
 }
 
 
