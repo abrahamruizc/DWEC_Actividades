@@ -15,6 +15,7 @@ function registrarInformacion(){
     //console.log("entra");
 
     let checks = document.getElementsByClassName("checkbox");
+    //let checkss = document.querySelectorAll("input[type=checkbox]");
     console.log(checks);
 
     let final_checks = [];
