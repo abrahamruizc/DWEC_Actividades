@@ -6,6 +6,62 @@ let persona;
 function inicio(){
     let generar = document.getElementById("generar");
     generar.addEventListener("click" , getXML);
+
+    let basexml = document.getElementById("basexml");
+    basexml.addEventListener("click" , introducirBasexml);
+
+    let base = document.getElementById("base");
+    base.addEventListener("click" , introducirBase);
+}
+
+function introducirBasexml(){
+
+    if(window.XMLHttpRequest){
+        let xml = new XMLHttpRequest();
+
+        xml.onreadystatechange = () =>{
+            if(xml.readyState === 4 && xml.status === 200){
+                let datos = JSON.parse(xml.responseText);
+                console.log(datos);
+                document.getElementById("respuesta").innerHTML = datos.resultado;
+            }
+        }
+        xml.open("POST", "save_users.php");
+        xml.setRequestHeader("Content-Type", "application/json");
+        xml.send(JSON.stringify(array_global));
+
+    } else {
+        console.log("No soporta AJAX");
+    }
+
+
+
+}
+
+function introducirBase(){
+
+    fetch("save_users.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(array_global),
+    })
+    .then((response) => {
+        if(response.ok){
+            return response.json();
+        }
+    })
+    .then((data) =>{
+        document.getElementById("respuesta").innerHTML = data.resultado;
+    })
+    .catch((error) => {
+        console.log(error);
+        document.getElementById("respuesta").innerHTML = error.resultado;
+    });
+
+
+
 }
 
 function getXML(){
@@ -56,6 +112,7 @@ function procesar_datos(datos){
         img.src = iterator.picture.medium;
         let card = document.createElement("div");
         card.setAttribute("class", "card");
+        card.setAttribute("style", "width: 16rem;");
         let cardbody = document.createElement("div");
         cardbody.setAttribute("class", "card-body");
         let pnombre = document.createElement("p");
@@ -85,7 +142,8 @@ function procesar_datos(datos){
         cardbody.appendChild(boton);
         card.appendChild(cardbody);
     
-        resultado.appendChild(card)
+        resultado.appendChild(card);
+        document.getElementById("respuesta").innerHTML = "Usuario Generado Correctamente";
 
     }
 
@@ -136,5 +194,5 @@ function meteTabla(){
     
     
     console.log(array_global);
-
+    document.getElementById("respuesta").innerHTML = "Usuario añadido a la Tabla";
 }
